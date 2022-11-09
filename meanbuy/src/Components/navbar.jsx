@@ -1,8 +1,35 @@
 import React from 'react'
 import {Box,HStack,Text,Image,Input, Flex,Link} from "@chakra-ui/react"
+import { Navigate, NavLink} from "react-router-dom"
 
+const links=[
+  {
+      to:"/Category",
+      title:"Category"
+  },
+  {
+      to:"/flashsale",
+      title:"Flash Sale"
+  },
+  {
+      to:"/bestdeals",
+      title:"Best deals"
+  },
+  {
+    to:"/shopbrand",
+    title:"Shop By Brand"
+  },
+  {
+    to:"/trending",
+    title:"Trending"
+  },{
+    to:"new",
+    title:"New Arrivals"
+  }
+]
 const Navbar = () => {
   return (
+    <>
     <div>
         <Box color='white' bg="black" w="100%" h="25px" >
              <Text ml="30%">
@@ -23,9 +50,19 @@ const Navbar = () => {
                 <Link>SignUp</Link>
                 <Text>Welcome User</Text>
             </Box>
-            <Image src='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5Ojf/2wBDAQoKCg0MDRoPDxo3JR8lNzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzf/wAARCAAiACgDASIAAhEBAxEB/8QAGgABAAIDAQAAAAAAAAAAAAAAAAMGBAUHAv/EACUQAAEEAQIGAwEAAAAAAAAAAAEAAgMEEQVBEhQhMVFhBhMigf/EABgBAAMBAQAAAAAAAAAAAAAAAAACBAMB/8QAIBEAAgICAQUBAAAAAAAAAAAAAAECAwQREyExQVFxFP/aAAwDAQACEQMRAD8A7bPYhrtDp5o4mk4Be4NBP9XsEEZByCo7NeG1EY542vadnDOPY9qgXJr9GzJVdbsD6jwjEjh0238KLKy3jaco7TLMbFWRtJ6aOiKC1cq02tdcswwNe7haZZA0E+BndUnSHX9QvxwC5ZDc5e4Su6NHdbz5Tp9u1LFLVqc0OVnrlnG1paZA3Dv0QMDBzv17FNi5X6IuSjpC5ONwSUXLZYUUFGF1elXgkdxPjiaxzvJAxlFY+5IuxOqvyr7Wo3Q2OjckEhJMj3AtHYDHrCtCx4KVavNLNDE1kkpy9w3U19PK4rwiim7iUn5ZqdNLqmpNqGChA94y4ROcXkY9rfLHNKsbguGJvMAYD/SyE1FbrTi/fT4cusVjTXrr9CIi2MQiIgAiIgAiIgD/2Q=='/>
+            <Image w="50px" src='https://cdn-icons-png.flaticon.com/512/891/891462.png'/>
         </HStack>
+        
     </div>
+    <Box>
+        {links.map((link)=>(
+          <NavLink key={link.to} to={link.to}>
+          ★ {link.title} 
+          </NavLink>
+      
+        ))}
+        </Box>
+    </>
   )
 }
 

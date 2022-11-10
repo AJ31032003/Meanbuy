@@ -9,3 +9,7 @@ export const getdata=({category,limit})=>{
         }
     })
 }
+
+export const getid=({id})=>{
+    return axios.get(`http://localhost:8000/data?id=${id}`)
+}

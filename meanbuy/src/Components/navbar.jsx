@@ -1,6 +1,7 @@
 import React from 'react'
 import {Box,HStack,Text,Image,Input, Flex,Link} from "@chakra-ui/react"
-import { Navigate, NavLink} from "react-router-dom"
+import {  NavLink} from "react-router-dom"
+// import { useState } from 'react'
 
 const links=[
   {
@@ -28,6 +29,7 @@ const links=[
   }
 ]
 const Navbar = () => {
+  
   return (
     <>
     <div>
@@ -37,8 +39,13 @@ const Navbar = () => {
              </Text>
              </Box>
         <HStack spacing={20} >
+            <NavLink to="/">
             <Image src="https://d64lkarmo2mrq.cloudfront.net/baselogo.png" w="200px"ml="20px"/>
-            <Input placeholder='Search' w="20%"/>
+            </NavLink>
+            <NavLink to="/search">
+            <Input placeholder='Search' w="200px"/>
+            
+            </NavLink>
             <Flex fontSize={15}>
                 <Link href='https://www.meanbuy.com/in/merchant/signup'>Seller's Corner </Link>
                 <Link href='https://www.meanbuy.com/in/contact'>| Feedback </Link>

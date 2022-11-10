@@ -1,4 +1,4 @@
-import { Box ,Flex,Grid,GridItem,Text } from '@chakra-ui/react'
+import { Box ,Grid,GridItem } from '@chakra-ui/react'
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
@@ -12,11 +12,12 @@ const Category = () => {
     useEffect(()=>{
         getdata({category:cat,limit:null}).then((res)=>setdata(res.data))    
     },[cat])
+    console.log(cat)
 
   return (
     <div>
         <Box bg="black" color="white">
-            <Grid templateColumns="repeat(5,150px)" templateRows="repeat(5,25px)" gap="20px">
+            <Grid templateColumns="repeat(8,150px)" templateRows="repeat(5,25px)" gap="20px">
                 <GridItem>
                 <GridItem cursor="pointer" onClick={()=>setcat("Kitchen")}>Kitchen</GridItem>
                 <GridItem cursor="pointer"onClick={()=>setcat("fashion")}>Fashion</GridItem>
@@ -35,10 +36,18 @@ const Category = () => {
                 </GridItem>
                 <GridItem>
                     <GridItem cursor="pointer" onClick={()=>setcat("Makeup")}>Makeup</GridItem>
+                    <GridItem cursor="pointer" onClick={()=>setcat("men_watch")}>Men's Watch</GridItem>
+                </GridItem>
+                <GridItem>
+                    <GridItem cursor="pointer" onClick={()=>setcat("mobile")}>Mobile Accesories</GridItem>
+                    <GridItem cursor="pointer" onClick={()=>setcat("small")}>Small Appliances</GridItem>
+                </GridItem>
+                <GridItem>
+                    <GridItem cursor="pointer" onClick={()=>setcat("toys")}>Toys</GridItem>
                 </GridItem>
             </Grid>          
         </Box>
-        <Grid>
+        <Grid templateColumns="1fr 1fr 1fr 1fr" gap="10px">
             
             {data.map((dat)=>(
                 <Datamap key={dat.id} id={dat.id} src={dat.image} price={dat.price} save={dat.save} name={dat.name} category={dat.category} />

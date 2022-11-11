@@ -5,9 +5,9 @@ const Footer = () => {
   return (
     <>
     <br /><br /><br />
-    <Box w="100%" h="500px" bg="#f2f2f2">
+    <Box w="100%" h="500px" bg="#f2f2f2" >
         <HStack spacing='40px'>
-            <Box w='200px' h="200px" bg='teal.500'>
+            <Box w='200px' h="200px" mt="10px">
                 <Text color="#f3af93">
                     OUR POLICIES
                 </Text>
@@ -27,7 +27,7 @@ const Footer = () => {
                 <Link href='https://www.meanbuy.com/terms/privacy'>Privacy Policy</Link>
                 </Text>
             </Box>
-            <Box w='200px' h="200px" bg='teal.500'>
+            <Box w='200px' h="200px" mt="10px">
             <Text color="#f3af93">
                 CORPORATE
             </Text>
@@ -44,7 +44,7 @@ const Footer = () => {
                  <Link href='https://www.meanbuy.com/sitemap' >Sitemap</Link>   
             </Text>
             </Box>
-            <Box w='150px' h="200px" bg='teal.500'>
+            <Box w='150px' h="200px" mt="10px">
                 <Text color="#f3af93">
                     HELP
                 </Text>
@@ -64,7 +64,7 @@ const Footer = () => {
                     <Link href='https://www.meanbuy.com/faq'>FAQ</Link>
                 </Text>
             </Box>
-            <Box w='150px' h="200px" bg='teal.500'>
+            <Box w='150px' h="200px">
                 <Text color="#f3af93">
                     SELL WITH US
                 </Text>

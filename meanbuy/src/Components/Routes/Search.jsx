@@ -1,4 +1,4 @@
-import { Grid, Input } from '@chakra-ui/react'
+import { Box, Grid, HStack, Input } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { getdata } from '../Fetch/axios'
@@ -24,13 +24,14 @@ const Search = () => {
     const [sea, setsea] = useState(null)
     const [fianl, setfianl] = useState(null)
     const [data, setdata] = useState([])
-    console.log(sea,fianl)
+    // console.log(sea,fianl)
     useEffect(()=>{
         getdata({category:fianl,limit:null}).then((res)=>setdata(res.data))
     },[fianl])
-    console.log(data)
+    // console.log(data)
   return (
     <>
+    <Box mt="50px">
     Search like these :-
     <Grid templateColumns="1fr 1fr 1fr 1fr 1fr 1fr" color="blue">
         {keys.map((ke)=>(
@@ -39,10 +40,11 @@ const Search = () => {
             </div>
         ))}
     </Grid>
-    <>
-    <Input onChange={(e)=>setsea(e.target.value)} placeholder="search" />
+    </Box>
+    <HStack mt="30px">
+    <Input onChange={(e)=>setsea(e.target.value)} placeholder="search" w="40%" />
     <button onClick={()=>setfianl(sea)}>Search</button>
-    </>
+    </HStack>
     <Grid templateColumns="1fr 1fr 1fr 1fr">
     {data.map((dat)=>(
            <Datamap key={dat.id} id={dat.id} src={dat.image} price={dat.price} save={dat.save} name={dat.name} category={dat.category} />

@@ -32,10 +32,10 @@ const Main = () => {
     
   return (
     <>
-    <Text fontSize={50} fontWeight="bold">
+    <Text fontSize={50} fontWeight="bold" textDecor="underline">
         Home Decor
     </Text>
-    <Flex gap={20}>
+    <Flex gap={20} mt="10px">
     {homedecor.map((decor)=>(
         <Datamap key={decor.id} id={decor.id} src={decor.image} category={decor.category} name={decor.name} price={decor.price} save={decor.save}/>        
     ))}

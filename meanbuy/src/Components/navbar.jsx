@@ -33,12 +33,12 @@ const Navbar = () => {
   return (
     <>
     <div>
-        <Box color='white' bg="black" w="100%" h="25px" >
+        <Box w="100%" h="25px" bg="black" color="white">
              <Text ml="30%">
              Upto Rs.500 off on Prepaid Purchases use coupon code - PREPAID 
              </Text>
              </Box>
-        <HStack spacing={20} >
+        <HStack spacing={20}>
             <NavLink to="/">
             <Image src="https://d64lkarmo2mrq.cloudfront.net/baselogo.png" w="200px"ml="20px"/>
             </NavLink>
@@ -57,18 +57,17 @@ const Navbar = () => {
                 <Link>SignUp</Link>
                 <Text>Welcome User</Text>
             </Box>
+            <NavLink to="/cart">
             <Image w="50px" src='https://cdn-icons-png.flaticon.com/512/891/891462.png'/>
+            </NavLink>
         </HStack>
-        
-    </div>
-    <Box>
+    <Box bg="black" color="white">
         {links.map((link)=>(
-          <NavLink key={link.to} to={link.to}>
-          ★ {link.title} 
-          </NavLink>
+          <NavLink key={link.to} to={link.to}>★{link.title}  </NavLink>
       
         ))}
         </Box>
+    </div>
     </>
   )
 }

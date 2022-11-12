@@ -1,4 +1,4 @@
-import { Text , Flex } from '@chakra-ui/react'
+import { Text , Flex, Heading,Center,Image } from '@chakra-ui/react'
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
@@ -17,7 +17,9 @@ const Main = () => {
     const [kitchen, setkitchen] = useState([])
     const [makeup, setmakeup] = useState([])
     const [flash, setflash] = useState([])
+    const [loading, setloading] = useState(false)
     useEffect(()=>{
+        setloading(true)
         getdata({category:"home_decor",limit:4}).then((res)=>sethomedecor(res.data))
         getdata({category:"jewellery",limit:4}).then((res)=>setjwellery(res.data))
         getdata({category:"electronic",limit:4}).then((res)=>setelectronic(res.data))
@@ -28,11 +30,21 @@ const Main = () => {
         getdata({category:"Kitchen",limit:4}).then((res)=>setkitchen(res.data))
         getdata({category:"Makeup",limit:4}).then((res)=>setmakeup(res.data))
         getdata({category:"flashsale",limit:4}).then((res)=>setflash(res.data))
+        setloading(false)
     },[])
     
+    if(loading){
+        return (
+            <Center>
+                <Image src='https://i.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.webp' alt="..Loading"/>
+            </Center>
+
+        )
+    }
+
   return (
     <>
-    <Text fontSize={50} fontWeight="bold" textDecor="underline">
+    <Text fontSize="30px" fontWeight="bold" mt="50px" fontFamily="Italics">
         Home Decor
     </Text>
     <Flex gap={20} mt="10px">
@@ -41,7 +53,7 @@ const Main = () => {
     ))}
     </Flex>
     <br/>
-    <Text fontSize={50} fontWeight="bold">
+    <Text fontSize={30} fontFamily="Italics" fontWeight="bold">
         Jewellery
     </Text>
     <Flex gap={20}>
@@ -50,7 +62,7 @@ const Main = () => {
     ))}
     </Flex>
     <br/>
-    <Text fontSize={50} fontWeight="bold">
+    <Text fontSize={30} fontFamily="Italics" fontWeight="bold">
         Electronic
     </Text>
     <Flex gap={20}>
@@ -59,7 +71,7 @@ const Main = () => {
     ))}
     </Flex>
     <br/>
-    <Text fontSize={50} fontWeight="bold">
+    <Text fontSize={30} fontFamily="Helevics" fontWeight="bold">
         Fashion
     </Text>
     <Flex gap={20}>
@@ -68,7 +80,7 @@ const Main = () => {
     ))}
     </Flex>
     <br/>
-    <Text fontSize={50} fontWeight="bold">
+    <Text fontSize={30} fontFamily="Italics" fontWeight="bold">
         Bluetooth
     </Text>
     <Flex gap={20}>
@@ -77,7 +89,7 @@ const Main = () => {
     ))}
     </Flex>
     <br/>
-    <Text fontSize={50} fontWeight="bold">
+    <Text fontSize={30} fontFamily="Italics" fontWeight="bold">
         Home Improvement
     </Text>
     <Flex gap={20}>
@@ -86,7 +98,7 @@ const Main = () => {
     ))}
     </Flex>
     <br/>
-    <Text fontSize={50} fontWeight="bold">
+    <Text fontSize={30} fontFamily="Italics" fontWeight="bold">
         Keyboard & Mouses
     </Text>
     <Flex gap={20}>
@@ -95,7 +107,7 @@ const Main = () => {
     ))}
     </Flex>
     <br/>
-    <Text fontSize={50} fontWeight="bold">
+    <Text fontSize={30} fontFamily="Italics" fontWeight="bold">
         Kitchen
     </Text>
     <Flex gap={20}>
@@ -104,7 +116,7 @@ const Main = () => {
     ))}
     </Flex>
     <br/>
-    <Text fontSize={50} fontWeight="bold">
+    <Text fontSize={30} fontFamily="Italics" fontWeight="bold">
         Makeup
     </Text>
     <Flex gap={20}>
@@ -112,7 +124,7 @@ const Main = () => {
         <Datamap key={decor.id} id={decor.id} src={decor.image} category={decor.category} name={decor.name} price={decor.price} save={decor.save}/>
     ))}
     </Flex><br/>
-    <Text fontSize={50} fontWeight="bold">
+    <Text fontSize={30} fontFamily="Italics" fontWeight="bold">
         Flash Sale
     </Text>
     <Flex gap={20}>

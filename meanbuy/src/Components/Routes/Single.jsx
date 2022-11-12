@@ -34,9 +34,9 @@ const Single = () => {
   return (
     <div>
       {data.map((dat)=>(
-        <Stack key={dat.id}>
+        <HStack key={dat.id}>
           <Box>
-          <Image src={dat.image} w="90%"/>
+          <Image src={dat.image} w="100%" />
           </Box>
           <HStack>
 
@@ -46,9 +46,9 @@ const Single = () => {
           <Heading>Offer Price: ₹{dat.price}</Heading>
           <Text>Valid for today only... .. .</Text>
           </Box>
-          <button onClick={()=>handleChange(data[0])}>Add to Cart</button>
+          <Button onClick={()=>handleChange(data[0])} bg="black" color="white">Add to Cart</Button>
           </HStack>
-        </Stack>
+        </HStack>
       ))}
     </div>
   )

@@ -1,9 +1,11 @@
-import { HStack,Image, Box, Text, Button, Heading, Flex, Spacer } from '@chakra-ui/react'
+import { HStack,Image, Box, Text, Button, Heading, Flex, Spacer, Center, Grid } from '@chakra-ui/react'
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { getcart, rem } from './Fetch/axios'
+
+
 
 
 const Cart = () => {
@@ -16,9 +18,12 @@ const Cart = () => {
         save:"",
         wasPrice:""
       })
-      const [tot, settot] = useState(0)
+    //   const [tot, settot] = useState(0)
+    const [loading, setloading] = useState(false)
     useEffect(()=>{
+        setloading(true)
         getcart().then((res)=>setdata(res.data))
+        setloading(false)
     },[])
     // console.log(data)
     const handleDelete=async (e)=>{
@@ -26,10 +31,10 @@ const Cart = () => {
 
     }
     useEffect(()=>{
-        if(final.image!=""){
+        if(final.image!==""){
             console.log("hi")
+            setloading(true)
             del(final)
-            getcart().then((res)=>setdata(res.data))
             setfinal({...final,
                 id:"",
                 image:"",
@@ -37,8 +42,12 @@ const Cart = () => {
                 price:"",
                 save:"",
                 wasPrice:""
-              })
-              total=total-Number(final.price)
+            })
+            total=total-Number(final.price)
+            window.location.reload(true);
+            alert("Item has been successfully removed.")
+            getcart().then((res)=>setdata(res.data))
+            setloading(false)
         }
         // getcart().then((res)=>setdata(res.data))
     },[handleDelete])
@@ -49,16 +58,23 @@ const Cart = () => {
     // console.log(data.price)
     let total=0
 
+    if(loading){
+        <Center>
+                <Image src='https://i.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.webp' alt="..Loading"/>
+            </Center>
+    }
   return (
     <>
-    <div>Cart</div>
+    <Heading>
+        <Center>Cart</Center>
+    </Heading>
     <Flex>
-        <Box>
-
+    <Grid templateColumns="1fr 1fr 1fr" gap="20px">
     {data.map((dat)=>(
         <HStack key={dat.id}>
             {total=total+Number(dat.price)}
-            <Image src={dat.image}/>
+            <Box mt="60px">
+            <Image src={dat.image} borderRadius="10%"/>
             <Box>
                 <Text>
                 {dat.name}
@@ -67,10 +83,11 @@ const Cart = () => {
                    ₹ {dat.price}
                 </Text>
             </Box>
-            <Button onClick={()=>handleDelete(dat)}>Remove</Button>
+            <Button onClick={()=>handleDelete(dat)} color="white" bg="green">Remove</Button>
+            </Box>
         </HStack>
     ))}
-    </Box>
+    </Grid>
     <Spacer/>
     <Box>
     <Text>Cart Total: {total}</Text>

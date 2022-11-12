@@ -44,7 +44,7 @@ const Cart = () => {
                 wasPrice:""
             })
             total=total-Number(final.price)
-            window.location.reload(true);
+            // window.location.reload(true);
             alert("Item has been successfully removed.")
             getcart().then((res)=>setdata(res.data))
             setloading(false)

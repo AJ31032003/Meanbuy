@@ -19,7 +19,7 @@ const Datamap = ({id,src,name,price,save}) => {
     
   }
   useEffect(()=>{
-    if(final.image!=""){
+    if(final.image!==""){
       handleSubmit(final)
       alert("Product has been added to cart.")
     }
@@ -29,18 +29,18 @@ const Datamap = ({id,src,name,price,save}) => {
   }
   return (
     <>
-        <Stack  key={id}>
+        <Stack  key={id} boxShadow="rgba(17, 12, 46, 0.15) 0px 48px 100px 0px">
         <Link to={`/category/${id}`}>
-        <Image w="100%" src={src} />
-        <Box>{name}</Box>
-        <Heading >
+        <Image w="100%" src={src} borderRadius="10%"/>
+        <Box ml="5px" fontFamily="Helvectics">{name}</Box>
+        <Box fontFamily="Algerian">
+        ☆ {save}
+          </Box>
+        <Heading color="green" fontSize="25px" fontFamily="Arial" ml="55%">
           ₹ {price}
           </Heading>
-        <Box >
-          {save}
-          </Box>
         </Link>
-          <Button onClick={()=>handleAdd({id,src,name,price,save})}>Add to Cart</Button>
+          <Button bg="red" color="white" onClick={()=>handleAdd({id,src,name,price,save})}>Add to Cart</Button>
       </Stack>
     </>
   )

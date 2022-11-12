@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { getdata } from '../Fetch/axios'
-import { Grid } from '@chakra-ui/react'
+import { Center, Grid, Heading } from '@chakra-ui/react'
 import Datamap from '../Fetch/data_map'
 
 
@@ -13,7 +13,10 @@ const Trending = () => {
     console.log(data)
   return (
     <>
-    <Grid templateColumns="1fr 1fr 1fr 1fr" gap="20px">
+    <Heading mt="20px">
+    <Center>Trending Now:-</Center>
+    </Heading>
+    <Grid templateColumns="1fr 1fr 1fr 1fr" gap="20px" mt="40px">
         {data.map((dat)=>(
             <Datamap key={dat.id} id={dat.id} src={dat.image} price={dat.price} save={dat.save} name={dat.name} category={dat.category} />
         ))}

@@ -17,9 +17,8 @@ const Main = () => {
     const [kitchen, setkitchen] = useState([])
     const [makeup, setmakeup] = useState([])
     const [flash, setflash] = useState([])
-    const [loading, setloading] = useState(false)
     useEffect(()=>{
-        setloading(true)
+       
         getdata({category:"home_decor",limit:4}).then((res)=>sethomedecor(res.data))
         getdata({category:"jewellery",limit:4}).then((res)=>setjwellery(res.data))
         getdata({category:"electronic",limit:4}).then((res)=>setelectronic(res.data))
@@ -30,10 +29,10 @@ const Main = () => {
         getdata({category:"Kitchen",limit:4}).then((res)=>setkitchen(res.data))
         getdata({category:"Makeup",limit:4}).then((res)=>setmakeup(res.data))
         getdata({category:"flashsale",limit:4}).then((res)=>setflash(res.data))
-        setloading(false)
+        
     },[])
     
-    if(loading){
+    if(homedecor.length===0){
         return (
             <Center>
                 <Image src='https://i.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.webp' alt="..Loading"/>

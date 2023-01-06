@@ -1,4 +1,4 @@
-import { Box ,Center,Grid,GridItem, Heading, Image } from '@chakra-ui/react'
+import { Box ,Center,Grid,GridItem, Image } from '@chakra-ui/react'
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
@@ -8,14 +8,14 @@ import Datamap from '../Fetch/data_map'
 const Category = () => {
     const [data, setdata] = useState([])
     const [cat, setcat] = useState(null)
-    const [loading, setloading] = useState(false)
+    // const [loading, setloading] = useState(false)
     useEffect(()=>{
-        setloading(true)
+        // setloading(true)
         getdata({category:cat,limit:null}).then((res)=>setdata(res.data))
-        setloading(false) 
+        // setloading(false) 
     },[cat])
     console.log(cat)
-    if(loading){
+    if(data.length===0){
         return(
             <Center>
                 <Image src='https://i.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.webp' alt="..Loading"/>
@@ -56,7 +56,7 @@ const Category = () => {
                 </GridItem>
             </Grid>          
         </Box>
-        <Grid templateColumns="1fr 1fr 1fr 1fr" gap="10px" mt="50px" >
+        <Grid templateColumns={["repeat(2,1fr)","repeat(3,1fr)","repeat(4,1fr)"]} gap="10px" mt="50px" >
             
             {data.map((dat)=>(
                 <Datamap key={dat.id} id={dat.id} src={dat.image} price={dat.price} save={dat.save} name={dat.name} category={dat.category} />

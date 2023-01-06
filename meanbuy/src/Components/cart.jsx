@@ -19,11 +19,11 @@ const Cart = () => {
         wasPrice:""
       })
     //   const [tot, settot] = useState(0)
-    const [loading, setloading] = useState(false)
+    // const [loading, setloading] = useState(false)
     useEffect(()=>{
-        setloading(true)
+        // setloading(true)
         getcart().then((res)=>setdata(res.data))
-        setloading(false)
+        // setloading(false)
     },[])
     // console.log(data)
     const handleDelete=async (e)=>{
@@ -33,7 +33,7 @@ const Cart = () => {
     useEffect(()=>{
         if(final.image!==""){
             console.log("hi")
-            setloading(true)
+            // setloading(true)
             del(final)
             setfinal({...final,
                 id:"",
@@ -44,10 +44,8 @@ const Cart = () => {
                 wasPrice:""
             })
             total=total-Number(final.price)
-            // window.location.reload(true);
             alert("Item has been successfully removed.")
             getcart().then((res)=>setdata(res.data))
-            setloading(false)
         }
         // getcart().then((res)=>setdata(res.data))
     },[handleDelete])
@@ -58,10 +56,12 @@ const Cart = () => {
     // console.log(data.price)
     let total=0
 
-    if(loading){
-        <Center>
+    if(data.length===0){
+        return(
+            <Center>
                 <Image src='https://i.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.webp' alt="..Loading"/>
             </Center>
+        )
     }
   return (
     <>
@@ -69,7 +69,7 @@ const Cart = () => {
         <Center>Cart</Center>
     </Heading>
     <Flex>
-    <Grid templateColumns="1fr 1fr 1fr" gap="20px">
+    <Grid templateColumns={["repeat(1,1fr)","repeat(2,1fr)","repeat(3,1fr)"]} gap="20px">
     {data.map((dat)=>(
         <HStack key={dat.id}>
             {total=total+Number(dat.price)}

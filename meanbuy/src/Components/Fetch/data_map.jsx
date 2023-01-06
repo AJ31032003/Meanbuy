@@ -36,7 +36,7 @@ const Datamap = ({id,src,name,price,save}) => {
         <Box fontFamily="Algerian">
         ☆ {save}
           </Box>
-        <Heading color="green" fontSize="25px" fontFamily="Arial" ml="55%">
+        <Heading color="green" fontSize={["15px","20px","25px"]} fontFamily="Arial" ml="55%">
           ₹ {price}
           </Heading>
         </Link>

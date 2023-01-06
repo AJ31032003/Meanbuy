@@ -17,7 +17,7 @@ const AllRoutes = () => {
           <Route path="/category" element={<Category/>} />
           <Route path="/flashsale" element={<Flashsale/>} />
           <Route path="/bestdeals" element={<>
-            <Heading>Page is under Construction..</Heading>
+            <Heading>Wait for new updates.</Heading>
           </>
           } />
           <Route path="/shopbrand" element={<><Heading>Page is under Construction..</Heading></>} />

@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { getid, putcart } from '../Fetch/axios'
-import {Box, Stack, Image,Text, Heading, HStack, Button} from "@chakra-ui/react"
+import {Box, Image,Text, Heading, HStack, Button, Center} from "@chakra-ui/react"
 
 const Single = () => {
     const params= useParams()
@@ -22,7 +22,7 @@ const Single = () => {
       setfinal({...final,id:e.id,image:e.image,name:e.name,price:e.price,save:e.save,wasPrice:e.wasPrice})
     }
     useEffect(()=>{
-      if(final.image!=""){
+      if(final.image!==""){
         handleSubmit(final)
         alert("Product has been added to Cart checkout from the cart.")
 
@@ -31,8 +31,15 @@ const Single = () => {
     const handleSubmit=(e)=>{
       putcart(e)
     } 
+    if(data.length===0){
+      return(
+        <Center>
+            <Image src='https://i.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.webp' alt="..Loading"/>
+        </Center>
+      )
+    }
   return (
-    <div>
+    <div style={{marginTop:"40px"}}>
       {data.map((dat)=>(
         <HStack key={dat.id}>
           <Box>

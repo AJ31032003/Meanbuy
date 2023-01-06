@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import { Navigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import {
     Modal,
     ModalOverlay,
@@ -14,6 +14,7 @@ import {
     FormLabel,
     FormControl,
     Text,
+    Box,
   } from '@chakra-ui/react'
 
 
@@ -29,7 +30,7 @@ const Checkout = () => {
   const finalRef = React.useRef(null)
     console.log(date)
     const handleSubmit=async ()=>{
-        if(Card!="" && Name!="" && Cvv!="" && date!=""){
+        if(Card!=="" && Name!=="" && Cvv!=="" && date!==""){
             alert("Payment has been made successful")
             alert("Money has been debited")
         }else{
@@ -38,8 +39,10 @@ const Checkout = () => {
     }
   return (
     <>
-        <Text>Proceed to payment, Your cart value is: {params.price} </Text>
-      <Button onClick={onOpen}>Proceed</Button>
+    <Box bgColor="#203050" h="250px" padding="40px">
+      <Text color="white" >Proceed to payment, Your cart value is: ₹ {params.price} </Text>
+      <Button onClick={onOpen} mt="10px" >Proceed</Button>
+    </Box>
 
       <Modal
         initialFocusRef={initialRef}
@@ -61,7 +64,7 @@ const Checkout = () => {
 
             <FormControl mt={4}>
               <FormLabel>Full Name</FormLabel>
-              <Input placeholder='Last name' onChange={(e)=>setName(e.target.value)}/>
+              <Input placeholder="Full name" onChange={(e)=>setName(e.target.value)}/>
             </FormControl>
             <FormControl mt={4}>
               <FormLabel>CVV</FormLabel>

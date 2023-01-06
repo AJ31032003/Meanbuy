@@ -7,14 +7,14 @@ import { Grid,Center,Image } from '@chakra-ui/react'
 
 const Flashsale = () => {
   const [flash, setflash] = useState([])
-  const [loading, setloading] = useState(false)
+  // const [loading, setloading] = useState(false)
   useEffect(()=>{
-    setloading(true)
+    // setloading(true)
     getdata({category:"flashsale",limit:null}).then((res)=>setflash(res.data)) 
-    setloading(false)   
+    // setloading(false)   
   },[])
   // console.log(flash)
-  if(loading){
+  if(flash.length===0){
     return(
       <Center>
                 <Image src='https://i.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.webp' alt="..Loading"/>
@@ -22,7 +22,7 @@ const Flashsale = () => {
     )
   }
   return (
-    <Grid templateColumns="1fr 1fr 1fr 1fr" gap="10px">
+    <Grid templateColumns={["repeat(2,1fr)","repeat(3,1fr)","repeat(4,1fr)"]} gap="10px">
     {flash.map((dat)=>(
         <Datamap key={dat.id} id={dat.id} src={dat.image} price={dat.price} save={dat.save} name={dat.name} category={dat.category} />
      ))}

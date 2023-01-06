@@ -1,4 +1,4 @@
-import { Text , Flex, Heading,Center,Image } from '@chakra-ui/react'
+import { Text , Flex,Center,Image } from '@chakra-ui/react'
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'

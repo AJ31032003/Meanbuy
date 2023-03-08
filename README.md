@@ -11,7 +11,7 @@
 
 **Original website link** :  https://www.meanbuy.com/
  <br/>
- Link of My deployed project :  https://lustrous-malabi-7c7fc6.netlify.app/
+ Link of My deployed project :  https://meanbuy-beta.vercel.app/
  <br/>
  
  
